@@ -1,0 +1,28 @@
+---
+- name: "Copy CA to remote host"
+  copy:
+    src: "{{ ssl['ca.path'] | basename }}"
+    dest: "{{ ssl['ca.path'] }}"
+    owner: filebeat
+    group: filebeat
+  become: true
+  when: ssl.enabled and (ssl['ca.upload'] is defined and ssl['ca.upload'])
+
+- name: "Copy Certificate and Key to remote host"
+  copy:
+    src: "{{ item | basename }}"
+    dest: "{{ item }}"
+    owner: filebeat
+    group: filebeat
+  become: true
+  when: ssl.enabled and (ssl['certificate.upload'] is defined and ssl['certificate.upload'])
+  loop:
+  - "{{ ssl['certificate.cert'] }}"
+  - "{{ ssl['certificate.key'] }}"
+
+- name: "Template Filebeat configuration"
+  template:
+    src: "filebeat.yml.j2"
+    dest: "/etc/filebeat/filebeat.yml"
+  become: true
+  notify: "Restart Filebeat"

@@ -1,2 +1,16 @@
 ---
-# defaults file for philranzato.ansible-role
+install: true
+configure: true
+
+logstash_hosts:
+- "logstash1.test.net"
+- "logstash2.test.net"
+
+ssl:
+  enabled: true
+  ca.upload: false
+  ca.path: /path/to/ca.pem
+  certificate.upload: false
+  certificate.cert: /path/to/cert.pem
+  certificate.key: /path/to/key.pem
+  certificate.key_passphrase: "F1lebeat!"

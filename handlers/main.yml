@@ -2,12 +2,10 @@
 - name: "Start Filebeat"
   systemd:
     name: filebeat
-    daemon_reload: yes
     enabled: yes
     state: started
 
 - name: "Restart Filebeat"
   systemd:
     name: filebeat
-    daemon_reload: yes
     state: restarted
