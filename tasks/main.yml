@@ -1,2 +1,6 @@
 ---
-# tasks file for philranzato.ansible-role
+- name: "Preflight Checks"
+  include_tasks: "00-preflight-checks.yml"
+
+- name: "Install Filebeat"
+  include_tasks: "01-install.yml"
