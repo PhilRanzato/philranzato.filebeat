@@ -8,10 +8,11 @@
   copy:
     src: "elasticsearch.repo"
     dest: "/etc/yum.repos.d/elasticsearch.repo"
+  become: true
 
 - name: "Install Filebeat"
   yum:
     name: filebeat
-    enablerepo: filebeat
     state: latest
   notify: "Start Filebeat"
+  become: true

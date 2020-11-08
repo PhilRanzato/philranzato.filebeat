@@ -1,0 +1,16 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - /var/log/messages
+
+processors:
+  - add_host_metadata:
+
+output.logstash:
+  hosts: [{% for lgs in logstash_hosts %}"{{ lgs }}:5044"{% if not loop.last %},{% endif %}{% endfor %}]
+{% if ssl.enabled %}
+  ssl.certificate_authorities: ["{{ ssl['ca.path'] }}"]
+  ssl.certificate: "{{ ssl['certificate.cert'] }}"
+  ssl.key: "{{ ssl['certificate.key'] }}"
+  ssl.key_passphrase: "{{ ssl['certificate.key_passphrase'] }}"
+{% endif %}
