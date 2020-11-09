@@ -6,7 +6,7 @@ Install and configure filebeat
 Requirements
 ------------
 
-None.
+A Logstash host to be targeted
 
 Role Variables
 --------------
