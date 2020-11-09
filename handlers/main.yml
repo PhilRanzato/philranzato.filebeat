@@ -4,8 +4,10 @@
     name: filebeat
     enabled: yes
     state: started
+  become: true
 
 - name: "Restart Filebeat"
   systemd:
     name: filebeat
     state: restarted
+  become: true
