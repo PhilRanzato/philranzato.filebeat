@@ -1,9 +1,9 @@
 galaxy_info:
   author: Phil Ranzato
-  description: Description
+  description: Install and configure Filebeat
   company: KiratechCH
   issue_tracker_url: https://github.com/PhilRanzato/philranzato.filebeat/issues
-  license: Apache-2.0
+  license: MIT
   min_ansible_version: 2.3
   platforms:
   - name: Centos
